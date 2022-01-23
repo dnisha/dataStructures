@@ -73,6 +73,7 @@ public class LinkedList {
 			last.next = newnode;
 			last = newnode;
 		}
+		size++;
 	}
 
 	//addbetween
@@ -202,21 +203,7 @@ public class LinkedList {
 	
 	}
 	//reverse
-//	void reverse() {
-//		Node prev,cur,temp;
-//		
-//		temp = head;
-//		cur = null;
-//		
-//		while(temp != null) {
-//			prev = cur;
-//			cur = temp;
-//			temp = temp.next;
-//			cur.next = prev;
-//			
-//		}
-//		head = cur;
-//	}
+
 	
 	void reverse() {
 		Node prev,cur,temp;
@@ -238,25 +225,71 @@ public class LinkedList {
 	Node newnode = new Node(key);
 	Node temp = head;
 	
-	while(temp != null) {
-		if(head == null) {
-			head=newnode;
+	if(head == null || head.data > key) {
+		newnode.next = head;
+		head=newnode;
+	}
+	else {
+		while(temp.next != null && temp.next.data < key) {
+			temp = temp.next;		}
+		if(temp.next == null) {
 			last = newnode;
-		}
-	
-		else {
-			newnode.next = head;
-			head = newnode;
-			
-		}
-		size++;
+}
+			newnode.next = temp.next;
+			temp.next = newnode;
 		
 	}
-	newnode.next = null;
-	last.next = newnode;
-	last = newnode;
+
 	size++;
+
+
 
 	}
 	
+	//sort linked list
+	void sort() {
+		Node ptr,cpt;
+		int temp;
+		ptr = head;
+		
+		while(ptr.next != null) {
+			cpt = ptr.next;
+			while(cpt != null) {
+			if(cpt.data < ptr.data) {
+				temp = ptr.data;
+				ptr.data = cpt.data;
+				cpt.data = temp;
+			}
+			cpt=cpt.next;
+			}
+			ptr = ptr.next;
+		}
+	}
+	
+	//concat list
+	void concat(LinkedList l1,LinkedList l2) {
+		
+		if(l1.size ==0 && l2.size ==0) {
+		System.out.println("Both the list are empty");	
+		}
+		else {
+			if(l1.size == 0 && l2.size !=0) {
+				System.out.println("list 1 is empty");
+				head = l2.head;
+				//l2.traverse();
+			}
+			else if(l2.size == 0 && l1.size != 0) {
+				head = l1.head;
+				
+			}
+			else {
+			Node tempLast =	l1.last;
+			tempLast.next = l2.head;
+			last = l2.last;
+			this.size = l1.size+l2.size;
+			l2 = null;
+			}
+		}
+	}
+
 }
