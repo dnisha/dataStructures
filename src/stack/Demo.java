@@ -4,11 +4,16 @@ public class Demo {
 
 	public static void main(String[] args) {
 		StackArray s = new StackArray(4);
+		
+		System.out.println("Queue is full : "+s.isFull());
+		System.out.println("Queue is empty : "+s.isEmpty());
 		s.traverse();
 		s.push(10);
+		System.out.println("Queue is empty : "+s.isEmpty());
 		s.push(20);
 		s.push(30);
 		s.push(40);
+		System.out.println("Queue is full : "+s.isFull());
 		s.push(50);
 		s.traverse();
 		System.out.println();

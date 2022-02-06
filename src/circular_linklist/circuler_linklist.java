@@ -179,4 +179,58 @@ void search(int data) {
 	}
 }
 
+//reverse list
+void reverse() {
+	Node prev,cur,temp;
+	prev = null;
+	cur = head;
+	
+	if(cur == null) {
+		System.out.println("List is empty");
+	}
+	else {
+		
+		last = head;
+		temp = cur.next;
+		do {
+		prev = cur;
+		cur = temp;
+		temp =temp.next;
+		cur.next = prev;
+		
+			
+		}while(temp != head);
+		head = cur;
+		last.next = cur;
+	}
+}
+
+//sort
+void sort() {
+	Node ptr1= head;
+	Node ptr2 = ptr1.next;
+	int temp;
+	if(ptr1 == null) {
+		System.out.println("List is empty");
+	}
+	else {
+		
+		do {
+			
+			do {
+				
+				if(ptr2.data > ptr1.data) {
+					temp = ptr2.data;
+					ptr2.data = ptr1.data;
+					ptr1.data = temp;
+					
+				
+				}
+				ptr2 = ptr2.next;
+			}while(ptr2 != head);
+			ptr1 = ptr1.next;
+		}while(ptr1 != head);
+	}
+}
+
 }

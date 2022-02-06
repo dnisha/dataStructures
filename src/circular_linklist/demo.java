@@ -28,6 +28,13 @@ public class demo {
 		System.out.println("Search element : ");
 		c.search(20);
 		c.traverse();
+		System.out.println("after reverse element : ");
+		c.reverse();
+		c.traverse();
+		System.out.println("sort list : ");
+		c.sort();
+		c.traverse();
+		
 	}
 
 }

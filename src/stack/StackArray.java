@@ -54,4 +54,24 @@ public class StackArray {
 		arr[top--] = 0;
 		return data;
 	}
+	
+	//isfull
+	boolean isFull() {
+		if(top == max-1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	//isEmpty
+	boolean isEmpty() {
+		if(top == -1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
